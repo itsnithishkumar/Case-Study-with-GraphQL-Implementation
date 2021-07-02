@@ -1,0 +1,50 @@
+schema{
+	query : Query
+	mutation: Mutation 
+}
+ 
+type Cart{
+	cartId: String
+	cartTotal: Double
+	items: [Items]
+}
+
+type Items{
+	quantity: Int
+	subTotal: Double
+	product: Product
+}
+
+type Product{
+	productId: String
+	productName: String
+	price: Double
+}
+
+input CartInput{
+	cartId: String
+	cartTotal: Double
+	items: ItemsInput
+}
+
+input ItemsInput{
+	quantity: Int
+	subTotal: Double
+	product: ProductInput
+}
+
+input ProductInput{
+	productId: String
+	productName: String
+	price: Double
+}
+type Query{
+	getCartByUserId(cartId : String) : String
+}
+
+type Mutation{
+	addItemToCart(cartId: String) : Cart
+	deleteCart(cartId: String): Cart
+	deleteItemFromCart(cartId: String): Cart
+	updateItemInCart(cartId : String) : Cart
+}

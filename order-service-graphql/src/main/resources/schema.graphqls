@@ -1,0 +1,73 @@
+schema{
+	query : Query
+	mutation: Mutation 
+}
+
+type Query{
+	getOrderByOrderId(orderId: String)
+}
+
+type Mutation{
+	placeOrder(input: OrderInput): Order
+	updateOrder(input: OrderInput): Order
+}
+
+type Order{
+	orderId: String
+	orderDate: String
+	orderStatus: String
+	totalPrice: Double
+	address: Address
+	items: [Items]
+}
+
+type Address{
+	fullName: String
+	mobileNo: Long
+	houseNo: String
+	streetName: String
+	city: String
+	state: String
+	pincode: Int
+}
+
+type Items{
+	quantity: Int
+	subTotal: Double
+	product: Product
+}
+
+type Product{
+	productName: String
+	price: Double
+}
+
+input OrderInput{
+	orderId: String
+	orderDate: String
+	orderStatus: String
+	totalPrice: Double
+	address: Address
+	items: [ItemsInput]
+}
+
+input AddressInput{
+	fullName: String
+	mobileNo: Long
+	houseNo: String
+	streetName: String
+	city: String
+	state: String
+	pincode: Int
+}
+
+input ItemsInput{
+	quantity: Int
+	subTotal: Double
+	product: ProductInput
+}
+
+input ProductInput{
+	productName: String
+	price: Double
+}

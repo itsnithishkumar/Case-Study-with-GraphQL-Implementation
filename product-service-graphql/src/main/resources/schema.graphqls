@@ -1,0 +1,33 @@
+schema {
+    query: Query,
+    mutation: Mutation
+}
+
+type Product{
+	 productId: String,
+	 productType: String,
+	 productName: String,
+	 category: String,
+	 price: Int,
+	 description: String,
+	 rating: Int
+}
+#Querying the products depends on the parameter
+type Query{
+	#Get all available products.
+	getAllProducts: [Product]
+	#Get product by their name.
+	getProductByName(productName: String) : [Product]
+	#Get Product By category
+	getProductByCategory(category: String) : [Product]
+	getProductByType(productType: String): [Product]
+	getProductById(productId: String) : Product
+}
+#The process of accessing the products to modify or deleting them
+type Mutation{
+	#Deleting Product by their ID.
+	deleteProductById(productId: String): String
+	#Modifying the existing product
+	updateProduct(productId: String, price: Int, description: String): Product
+	
+}

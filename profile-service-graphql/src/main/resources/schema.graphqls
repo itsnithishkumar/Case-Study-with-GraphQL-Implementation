@@ -1,0 +1,66 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type User {
+	userId: String!,
+	password: String,
+	firstName: String,
+	lastName: String,
+	mobileNo: Long,
+	emailId: String
+	role: String
+}
+
+type Query{
+    getAllUsers:[User]
+    getUserById(userId: String! ): User
+}
+
+type Mutation{
+	deleteUserById(userId: String): String
+	updateProfile(userId: String ,emailId:  String ,mobileNo: Long): User
+	addProfile(user: UserInput): User
+}
+
+input UserInput{
+	userId: String!,
+	password: String,
+	firstName: String,
+	lastName: String,
+	mobileNo: Long,
+	emailId: String
+	role: String
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
